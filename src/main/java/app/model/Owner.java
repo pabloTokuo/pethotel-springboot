@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -28,7 +27,7 @@ public class Owner {
     private String email;
 
     @OneToMany(mappedBy = "owner")
-    private Set<Animals> animals;
+    private List<Animals> animals;
 
     @OneToMany(mappedBy = "owner")
     private List<Address> address;

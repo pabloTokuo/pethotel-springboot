@@ -16,10 +16,6 @@ public class Animals {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private Owner owner;
-
     @Column(name = "name")
     private String name;
 
@@ -28,4 +24,8 @@ public class Animals {
 
     @Column(name = "breed", length = 50)
     private String breed;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private Owner owner;
 }

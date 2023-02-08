@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pethotel")
+@RequestMapping("/pethotel/owner")
 public class OwnerController {
 
     @Autowired
