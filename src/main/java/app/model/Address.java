@@ -2,35 +2,31 @@ package app.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_user")
-public class Owner {
+@Table(name = "tb_address")
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name", length = 100)
+    @Column(name = "street")
     @NotEmpty
-    private String name;
+    private String street;
 
-    @Column(name = "email", length = 100)
-    private String email;
-
-    @OneToMany(mappedBy = "owner")
-    private Set<Animals> animals;
+    @Column(name = "zip_code", length = 9)
+    @NotNull
+    private Integer zip;
 
     @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
-
+    @JoinColumn(name = "owner_id")
+    private Owner owner;
 }
