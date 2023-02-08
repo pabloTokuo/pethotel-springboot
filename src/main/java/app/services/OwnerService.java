@@ -15,4 +15,10 @@ public interface OwnerService {
 
     /* Insert Owner */
     Owner insertOwner(Owner obj);
+
+    void deleteOwnerById(Long id);
+
+    Owner updateOwnerById(Long id, Owner owner);
+
+    void updateOwner(Owner entity, Owner obj);
 }

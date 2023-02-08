@@ -32,5 +32,15 @@ public class OwnerController {
         return ownerService.insertOwner(owner);
     }
 
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteOwnerByid(@PathVariable Long id) {
+        ownerService.deleteOwnerById(id);
+    }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Owner updateOwner(@RequestBody Owner owner, @PathVariable Long id) {
+        return ownerService.updateOwnerById(id, owner);
+    }
 }
