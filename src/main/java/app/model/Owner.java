@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -29,8 +30,7 @@ public class Owner {
     @OneToMany(mappedBy = "owner")
     private Set<Animals> animals;
 
-    @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @OneToMany(mappedBy = "owner")
+    private List<Address> address;
 
 }
