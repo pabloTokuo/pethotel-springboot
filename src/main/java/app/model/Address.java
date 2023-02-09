@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "street")
@@ -24,7 +26,7 @@ public class Address {
 
     @Column(name = "zip_code", length = 9)
     @NotNull
-    private Integer zip;
+    private BigDecimal zip;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")

@@ -1,5 +1,6 @@
 package app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -16,20 +17,25 @@ import java.util.List;
 public class Owner {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 100)
+    @Column
     @NotEmpty
     private String name;
 
-    @Column(name = "email", length = 100)
+    @Column
     private String email;
 
+    @Column
+    @NotEmpty
+    private String phone;
+
     @OneToMany(mappedBy = "owner")
+    @JsonIgnore
     private List<Animals> animals;
 
     @OneToMany(mappedBy = "owner")
+    @JsonIgnore
     private List<Address> address;
-
 }

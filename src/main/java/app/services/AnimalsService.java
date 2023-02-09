@@ -9,4 +9,7 @@ public interface AnimalsService {
     List<Animals> findAll();
 
     Animals findAnimalById(Long id);
+
+    Animals insertAnimals(Animals animals);
+
 }
