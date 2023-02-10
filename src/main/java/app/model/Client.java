@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_user")
-public class Owner {
+public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,11 +31,11 @@ public class Owner {
     @NotEmpty
     private String phone;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "client")
     @JsonIgnore
     private List<Animals> animals;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "client")
     @JsonIgnore
     private List<Address> address;
 }

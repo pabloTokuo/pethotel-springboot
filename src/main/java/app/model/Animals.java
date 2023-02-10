@@ -26,6 +26,6 @@ public class Animals {
     private String breed;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "owner_id")
-    private Owner owner;
+    @JoinColumn(name = "client_id")
+    private Client client;
 }

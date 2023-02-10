@@ -29,6 +29,6 @@ public class Address {
     private BigDecimal zip;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private Owner owner;
+    @JoinColumn(name = "client_id")
+    private Client client;
 }

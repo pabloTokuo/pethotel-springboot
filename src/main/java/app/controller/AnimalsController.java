@@ -1,7 +1,7 @@
 package app.controller;
 
 import app.model.Animals;
-import app.repositories.OwnerRepository;
+import app.repositories.ClientRepository;
 import app.services.impl.AnimalsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,9 +17,6 @@ public class AnimalsController {
     @Autowired
     private AnimalsServiceImpl animalsService;
 
-    @Autowired
-    private OwnerRepository ownerRepository;
-
     @GetMapping
     public List<Animals> findAll() {
         return animalsService.findAll();
@@ -33,8 +30,12 @@ public class AnimalsController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Animals insertOwner(@RequestBody Animals animals) {
-        animals.setOwner(ownerRepository.findById(animals.getOwner().getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
         return animalsService.insertAnimals(animals);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAnimalById(@PathVariable Long id) {
+        animalsService.deleteAnimalById(id);
+    }
 }

@@ -12,4 +12,6 @@ public interface AnimalsService {
 
     Animals insertAnimals(Animals animals);
 
+    void deleteAnimalById(Long id);
+
 }

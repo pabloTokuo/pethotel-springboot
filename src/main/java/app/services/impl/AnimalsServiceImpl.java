@@ -2,7 +2,7 @@ package app.services.impl;
 
 import app.model.Animals;
 import app.repositories.AnimalsRepository;
-import app.repositories.OwnerRepository;
+import app.repositories.ClientRepository;
 import app.services.AnimalsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ public class AnimalsServiceImpl implements AnimalsService {
     private AnimalsRepository animalsRepository;
 
     @Autowired
-    private OwnerRepository ownerRepository;
+    private ClientRepository clientRepository;
 
     @Override
     public List<Animals> findAll() {
@@ -32,6 +32,12 @@ public class AnimalsServiceImpl implements AnimalsService {
 
     @Override
     public Animals insertAnimals(Animals animals) {
+        animals.setClient(clientRepository.findById(animals.getClient().getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
         return animalsRepository.save(animals);
+    }
+
+    @Override
+    public void deleteAnimalById(Long id) {
+        animalsRepository.deleteById(id);
     }
 }
