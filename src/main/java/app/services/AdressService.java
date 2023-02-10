@@ -10,6 +10,9 @@ public interface AdressService {
 
     Address findById(Long id);
 
+    Address insertAddress(Address address);
+
+    void deleteAddressById(Long id);
 
 
 }

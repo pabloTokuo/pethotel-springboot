@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_user")
+@Table(name = "tb_client")
 public class Client {
 
     @Id
@@ -30,6 +31,10 @@ public class Client {
     @Column
     @NotEmpty
     private String phone;
+
+    @Column(length = 11)
+    @CPF
+    private String cpf;
 
     @OneToMany(mappedBy = "client")
     @JsonIgnore
