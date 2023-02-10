@@ -2,6 +2,7 @@ package app.controller;
 
 import app.model.Address;
 import app.services.impl.AddressServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class AddressController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Address insertAddress(@RequestBody Address address) {
+    public Address insertAddress(@RequestBody @Valid Address address) {
         return addressService.insertAddress(address);
     }
 

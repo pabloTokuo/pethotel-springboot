@@ -3,7 +3,6 @@ package app.services;
 import app.model.Client;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ClientService {
 
@@ -11,7 +10,7 @@ public interface ClientService {
     List<Client> findAll();
 
     /* Id Owner */
-    Optional<Client> findById(Long id);
+    Client findById(Long id);
 
     /* Insert Owner */
     Client insertClient(Client obj);

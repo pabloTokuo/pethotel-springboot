@@ -2,6 +2,7 @@ package app.controller;
 
 import app.model.Animals;
 import app.services.impl.AnimalsServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class AnimalsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Animals insertOwner(@RequestBody Animals animals) {
+    public Animals insertOwner(@RequestBody @Valid Animals animals) {
         return animalsService.insertAnimals(animals);
     }
 

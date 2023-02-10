@@ -22,18 +22,19 @@ public class Client {
     private Long id;
 
     @Column
-    @NotEmpty
+    @NotEmpty(message = "{field.name.mandatory}")
     private String name;
 
     @Column
     private String email;
 
     @Column
-    @NotEmpty
+    @NotEmpty(message = "{field.email.mandatory}")
     private String phone;
 
     @Column(length = 11)
-    @CPF
+    @CPF(message = "{field.cpf.invalid}")
+    @NotEmpty(message = "{field.cpf.mandatory}")
     private String cpf;
 
     @OneToMany(mappedBy = "client")

@@ -1,15 +1,14 @@
 package app.services.impl;
 
+import app.exception.BusinessRuleException;
 import app.model.Client;
 import app.repositories.ClientRepository;
 import app.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -19,12 +18,16 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public List<Client> findAll() {
+        if (clientRepository.findAll().isEmpty()) {
+            throw new BusinessRuleException("List is Empty");
+        }
+
         return clientRepository.findAll();
     }
 
     @Override
-    public Optional<Client> findById(Long id) {
-        return clientRepository.findById(id);
+    public Client findById(Long id) {
+        return clientRepository.findById(id).orElseThrow(() -> new BusinessRuleException("Client ID not found."));
     }
 
     @Override
@@ -39,7 +42,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client updateClientById(Long id, Client client) {
-        Client entity = clientRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Client entity = clientRepository.findById(id).orElseThrow(() -> new BusinessRuleException("Client ID not found."));
         updateClient(entity, client);
         return clientRepository.save(entity);
     }

@@ -2,15 +2,15 @@ package app.controller;
 
 import app.model.Client;
 import app.services.impl.ClientServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/pethotel/owner")
+@RequestMapping("/pethotel/client")
 public class ClientController {
 
     @Autowired
@@ -23,12 +23,12 @@ public class ClientController {
 
     @GetMapping("/{id}")
     public Client findById(@PathVariable Long id) {
-        return clientServiceImpl.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Owner not found."));
+        return clientServiceImpl.findById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Client insertClient(@RequestBody Client client) {
+    public Client insertClient(@RequestBody @Valid Client client) {
         return clientServiceImpl.insertClient(client);
     }
 
