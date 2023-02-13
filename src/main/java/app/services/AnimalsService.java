@@ -1,6 +1,7 @@
 package app.services;
 
 import app.model.Animals;
+import app.model.enums.StatusPet;
 
 import java.util.List;
 
@@ -13,5 +14,7 @@ public interface AnimalsService {
     Animals insertAnimals(Animals animals);
 
     void deleteAnimalById(Long id);
+
+    void updateStatus(Long id, StatusPet statusPet);
 
 }
