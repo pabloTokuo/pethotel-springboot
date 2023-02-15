@@ -39,7 +39,7 @@ public class Client {
 
     @OneToMany(mappedBy = "client")
     @JsonIgnore
-    private List<Animals> animals;
+    private List<Pet> animals;
 
     @OneToMany(mappedBy = "client")
     @JsonIgnore

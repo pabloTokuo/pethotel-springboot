@@ -1,9 +1,9 @@
 package app.repositories;
 
-import app.model.Animals;
+import app.model.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AnimalsRepository extends JpaRepository<Animals, Long> {
+public interface PetRepository extends JpaRepository<Pet, Long> {
 }

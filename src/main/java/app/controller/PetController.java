@@ -1,9 +1,9 @@
 package app.controller;
 
 import app.dto.UpdateStatusDTO;
-import app.model.Animals;
+import app.model.Pet;
 import app.model.enums.StatusPet;
-import app.services.impl.AnimalsServiceImpl;
+import app.services.impl.PetServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,31 +15,31 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/pethotel/pet")
-public class AnimalsController {
+public class PetController {
 
     @Autowired
-    private AnimalsServiceImpl animalsService;
+    private PetServiceImpl animalsService;
 
     @GetMapping
-    public List<Animals> findAll() {
+    public List<Pet> findAll() {
         return animalsService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Animals findById(@PathVariable Long id) {
-        return animalsService.findAnimalById(id);
+    public Pet findById(@PathVariable Long id) {
+        return animalsService.findPetById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Animals insertOwner(@RequestBody @Valid Animals animals) {
-        return animalsService.insertAnimals(animals);
+    public Pet insertOwner(@RequestBody @Valid Pet pet) {
+        return animalsService.insertPet(pet);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAnimalById(@PathVariable Long id) {
-        animalsService.deleteAnimalById(id);
+        animalsService.deletePetById(id);
     }
 
     @PatchMapping("{id}")

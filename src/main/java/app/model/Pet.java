@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -17,8 +16,8 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_animal")
-public class Animals {
+@Table(name = "tb_pet")
+public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
