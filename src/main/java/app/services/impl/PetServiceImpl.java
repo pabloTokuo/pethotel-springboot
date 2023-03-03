@@ -3,16 +3,18 @@ package app.services.impl;
 import app.exception.BusinessRuleException;
 import app.model.Pet;
 import app.model.enums.StatusPet;
-import app.repositories.PetRepository;
 import app.repositories.ClientRepository;
+import app.repositories.PetRepository;
 import app.services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -36,8 +38,10 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public Pet insertPet(Pet pet) {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         pet.setCheckInDate(LocalDate.now());
-        pet.setCheckInTime(LocalTime.now());
+        pet.setCheckInTime(LocalTime.parse(sdf.format(date)));
         pet.setClient(clientRepository.findById(pet.getClient().getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
         return petRepository.save(pet);
     }

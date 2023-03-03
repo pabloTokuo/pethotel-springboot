@@ -20,7 +20,6 @@ public class ClientServiceImpl implements ClientService {
         if (clientRepository.findAll().isEmpty()) {
             throw new BusinessRuleException("List is Empty");
         }
-
         return clientRepository.findAll();
     }
 

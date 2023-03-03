@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -39,9 +39,9 @@ public class Client {
 
     @OneToMany(mappedBy = "client")
     @JsonIgnore
-    private List<Pet> animals;
+    private Set<Pet> animals;
 
     @OneToMany(mappedBy = "client")
     @JsonIgnore
-    private List<Address> address;
+    private Set<Address> address;
 }
